@@ -1,10 +1,29 @@
 rednet.open("left")
 
-chanel = "stars_mana_farm"
+local chanel = "stars_mana_farm"
 
 while true do   
-    id, message = rednet.receive(chanel);
-    command = message['command'];
-    args = message['args'];
+    print('PORT: ', chanel)
+
+    local id, message = rednet.receive(chanel);
+    local command = message['command'];
+    local args = unpack(message['args']);
+
+    if command == "drop" then 
+        turtle.drop(args)
+    end
+
+    if command == "shell" then 
+        shell.run(args)
+    end
+
+    if command == "select" then
+        turtle.select(args)
+    end
+
+    if command == 'change_port' then 
+        chanel = args
+    end
+
     print(command, args)
 end
