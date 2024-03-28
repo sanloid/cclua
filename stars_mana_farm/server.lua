@@ -11,9 +11,9 @@ while true do
     local message = {}
 
     message['command'] = "drop"
-    message['args'] = {tonumber(startupArgs[1])}
+    message['args'] = {1}
 
     broadcast(message)
-    sleep(tonumber(startupArgs[0]))
+    sleep(130)
 
 end
